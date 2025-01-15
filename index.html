@@ -4,24 +4,70 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Momentum: 100 Days Of DSA Sprint</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .question {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .question span {
+        margin-right: 10px;
+      }
+    </style>
   </head>
   <body>
     <div class="Day1">
       <h2>Day 1</h2>
-      <span>Two Sum:</span>
-      <a href="https://leetcode.com/problems/two-sum/description/">Leetcode</a>
-      <br />
-      <span>Concatenation of Array: </span>
-      <a
-        href="https://leetcode.com/problems/concatenation-of-array/description/"
-        >Leetcode</a
-      >
-      <br />
-      <span>Shuffle the Array </span>
-      <a
-        href="https://leetcode.com/problems/shuffle-the-array/description/"
-        >Leetcode</a
-      >
+      <div class="question">
+        <input type="checkbox" id="two-sum" />
+        <span>Two Sum:</span>
+        <a href="https://leetcode.com/problems/two-sum/description/">Leetcode</a>
+      </div>
+      <div class="question">
+        <input type="checkbox" id="concat-array" />
+        <span>Concatenation of Array:</span>
+        <a
+          href="https://leetcode.com/problems/concatenation-of-array/description/"
+          >Leetcode</a
+        >
+      </div>
+      <div class="question">
+        <input type="checkbox" id="shuffle-array" />
+        <span>Shuffle the Array:</span>
+        <a
+          href="https://leetcode.com/problems/shuffle-the-array/description/"
+          >Leetcode</a
+        >
+      </div>
     </div>
+    <script>
+      // Function to initialize the state of checkboxes
+      function initializeCheckboxes() {
+        const checkboxes = document.querySelectorAll("input[type='checkbox']");
+        checkboxes.forEach((checkbox) => {
+          const id = checkbox.id;
+          const savedState = localStorage.getItem(id);
+
+          // If there's a saved state in localStorage, set the checkbox accordingly
+          if (savedState === "true") {
+            checkbox.checked = true;
+          } else {
+            checkbox.checked = false;
+          }
+
+          // Add an event listener to update localStorage when the checkbox is toggled
+          checkbox.addEventListener("change", () => {
+            localStorage.setItem(id, checkbox.checked);
+          });
+        });
+      }
+
+      // Call the function to initialize checkboxes
+      initializeCheckboxes();
+    </script>
   </body>
 </html>
